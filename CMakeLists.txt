@@ -7,7 +7,10 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)  
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-add_executable(sensor app/src/main.cpp
-
+add_executable(sensor 
+app/src/main.cpp
+app/src/FakeSensor.cpp    
 
 )
+
+target_include_directories(sensor PRIVATE app/include)
