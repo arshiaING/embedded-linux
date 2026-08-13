@@ -8,9 +8,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(sensor 
-app/src/main.cpp
+app/main.cpp
 app/src/FakeSensor.cpp    
 app/src/TimeUtils.cpp
+app/src/CsvLogger.cpp
 )
 
 target_include_directories(sensor PRIVATE app/include)

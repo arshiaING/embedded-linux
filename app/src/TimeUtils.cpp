@@ -8,6 +8,7 @@
 #include <ctime>
 
 
+
 // funksjon for å hente nåværende tid
 std::string getCurrentTimeStamp() {
     auto now = std::chrono::system_clock::now();
