@@ -1,5 +1,6 @@
 # include "CsvLogger.hpp"
 # include "TimeUtils.hpp"
+#include "Logger.hpp"
 
 # include <fstream>
 # include <iostream>
@@ -12,12 +13,12 @@ CsvLogger::CsvLogger(const std::string& filename)
 }
 
 void CsvLogger::logData(const std::string& timestamp, double temperature) {
-    keepLatestMeasurements();
+   {
 
 
     std::ofstream file(filename_, std::ios::app);
     if (!file.is_open()) {
-        std::cerr << " kan ikke åpne filen " << filename_ << std::endl;
+        Logger::Error("Kan ikke åpne CSV-filen: " + filename_);
         return;
     }
     if (file.tellp() == 0) {
@@ -26,12 +27,14 @@ void CsvLogger::logData(const std::string& timestamp, double temperature) {
 
     file << timestamp << "," << temperature << "\n";
 }
+     keepLatestMeasurements();
+}
 
 
 void CsvLogger::keepLatestMeasurements() {
     std::ifstream file(filename_);
     if (!file.is_open()) {
-        std::cerr << " kan ikke åpne filen " << filename_ << std::endl;
+        Logger::Error("Kan ikke åpne filen: " + filename_);
         return;
     }
     
@@ -54,7 +57,7 @@ void CsvLogger::keepLatestMeasurements() {
     std::ofstream outputFile(filename_, std::ios::trunc);
 
     if (!outputFile.is_open()) {
-        std::cerr << "Kan ikke skrive filen: " << filename_ << "\n";
+        Logger::Error("Kan ikke åpne filen for skriving: " + filename_);
         return;
     }
     outputFile << header << "\n";

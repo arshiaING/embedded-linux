@@ -1,3 +1,5 @@
+// lagrer målinger i en CSV-fil
+
 # pragma once
 
 # include <string>

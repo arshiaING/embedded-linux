@@ -12,6 +12,7 @@ app/main.cpp
 app/src/FakeSensor.cpp    
 app/src/TimeUtils.cpp
 app/src/CsvLogger.cpp
+app/src/Logger.cpp
 )
 
 target_include_directories(sensor PRIVATE app/include)
