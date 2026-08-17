@@ -8,6 +8,8 @@ struct Config {
     std::string sensorMode = "fake"; // viktig å endre at om feil skjer at den ikke automtisk går til fake 
     int sleepTime = 1;
     std::string csvFilename = "measurements.csv"; 
+    double minValidTemperature = -30.0;
+    double maxValidTemperature = 45.0;
 }; // bruker dette om config ini for feil tall kan den gå til defult 
 
 Config loadConfig(const std::string& filePath);

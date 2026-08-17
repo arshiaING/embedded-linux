@@ -14,6 +14,7 @@ app/src/TimeUtils.cpp
 app/src/CsvLogger.cpp
 app/src/Logger.cpp
 app/src/Config.cpp
+app/src/TemperatureValidator.cpp
 )
 
 target_include_directories(sensor PRIVATE app/include)

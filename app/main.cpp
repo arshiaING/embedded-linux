@@ -5,6 +5,7 @@
 #include "CsvLogger.hpp"
 #include "Logger.hpp"
 #include "Config.hpp"
+#include "TemperatureValidator.hpp"
 
 
 
@@ -48,7 +49,7 @@ int main() {
     config.csvFilename,
     config.maxMeasurements);
 
-    
+
     Logger::Normal("Sensor daemon started.");
     std::signal(SIGINT, handleSignal);
    
@@ -58,10 +59,22 @@ int main() {
     while (running) {
        
         const double temperature = sensor.readTemperature();
-        const std::string timestamp = getCurrentTimeStamp();
-        csvLogger.logData(timestamp, temperature);
 
-        Logger::Normal("Fake temperature: " + std::to_string(temperature) + " C");
+        if (isTemperatureValid(temperature, config.minValidTemperature, config.maxValidTemperature)){
+            const std::string timestamp = getCurrentTimeStamp();
+            csvLogger.logData(timestamp, temperature);
+            Logger::Normal("Fake temperature: " + std::to_string(temperature) + "C");
+            
+    
+    
+    } else {
+            Logger::Warning("Invalid temperature: " + std::to_string(temperature) + "C");
+        
+        
+        
+        }
+
+
 
         std::this_thread::sleep_for(std::chrono::seconds(config.sleepTime));
     }
