@@ -4,7 +4,7 @@
 
 Denne planen viser hvordan jeg skal bygge prosjektet **Embedded Linux-sensornode** fra start til slutt.
 
-Sist kontrollert: 15. august 2026, mot kildekoden og Git-historikken i prosjektet.
+Sist kontrollert: 17. august 2026, mot kildekoden i prosjektet.
 
 ## Status
 
@@ -46,7 +46,7 @@ Få den simulerte temperaturen til å oppføre seg mer som en ekte sensor.
 - [x] Flytte `FakeSensor`-koden til separate filer
 - [x] Kontrollere at programmet kjører kontinuerlig
 - [x] Kontrollere at Ctrl+C stopper programmet på en ryddig måte
-- [ ] Legge til et konfigurerbart måleintervall
+- [x] Legge til et konfigurerbart måleintervall
 
 ---
 
@@ -63,7 +63,9 @@ Få den simulerte temperaturen til å oppføre seg mer som en ekte sensor.
 - [x] Håndtere enkle filfeil
 - [x] Forbedre meldingene i terminalen
 - [x] Begrense CSV-filen til de 10 nyeste målingene
-- [ ] Legge til en enkel konfigurasjonsfil
+- [x] Legge til en enkel konfigurasjonsfil
+- [x] La konfigurasjonen styre måleintervall, CSV-filnavn og maksimalt antall målinger
+- [x] Legge til en egen Logger-modul med NORMAL, WARNING og ERROR
 
 ---
 
@@ -77,7 +79,8 @@ Klargjøre programmet for både simulerte og ekte sensorer.
 
 - [ ] Opprette et `ISensor`-grensesnitt
 - [ ] La `FakeSensor` bruke `ISensor`
-- [ ] Legge til grunnleggende validering av temperaturverdier
+- [x] Legge til grunnleggende validering av temperaturverdier
+- [x] Avvise NaN, uendelige og verdier utenfor konfigurerte temperaturgrenser
 - [ ] Legge til GoogleTest
 - [~] Legge til versjonsinformasjon i programmet (versjonen finnes bare i CMake)
 - [ ] Legge til GitHub Actions
