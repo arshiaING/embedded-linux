@@ -4,6 +4,7 @@
 #include "TimeUtils.hpp"
 #include "CsvLogger.hpp"
 #include "Logger.hpp"
+#include "Config.hpp"
 
 
 
@@ -19,7 +20,7 @@
 
 
 
-const int sleepTime = 1; // seconds
+
 
 
 
@@ -39,10 +40,18 @@ void handleSignal(int) {
 
 int main() {
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
+    Config config = loadConfig("config/config.ini");
     FakeSensor sensor;
-    CsvLogger csvLogger("measurements.csv");
+    
+    
+    CsvLogger csvLogger(
+    config.csvFilename,
+    config.maxMeasurements);
+
+    
     Logger::Normal("Sensor daemon started.");
     std::signal(SIGINT, handleSignal);
+   
     
 
 
@@ -54,7 +63,7 @@ int main() {
 
         Logger::Normal("Fake temperature: " + std::to_string(temperature) + " C");
 
-        std::this_thread::sleep_for(std::chrono::seconds(sleepTime));
+        std::this_thread::sleep_for(std::chrono::seconds(config.sleepTime));
     }
     Logger::Normal("Sensorstopped cleanly.");
 

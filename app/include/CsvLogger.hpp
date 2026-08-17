@@ -8,12 +8,15 @@
 
 class CsvLogger {
 public:
-    explicit CsvLogger(const std::string& filename);
+    CsvLogger(
+    const std::string& filename,
+    std::size_t maxMeasurements
+);
 
     void logData(const std::string& timestamp, double temperature);
 
    private:
     std::string filename_;
-    static constexpr std::size_t maxMeasurements_ = 10;
+    std::size_t maxMeasurements_;
     void keepLatestMeasurements();
 };

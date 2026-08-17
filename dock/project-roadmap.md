@@ -28,8 +28,7 @@ Lage et enkelt C++-program som fungerer uten Raspberry Pi-maskinvare.
 - [x] Opprette `main.cpp`
 - [x] Generere en simulert temperatur
 - [x] Bygge programmet med CMake
-- [x] Kjøre programmet i terminalen
-- [x] Lage den første Git-commiten
+
 
 ---
 
@@ -55,7 +54,7 @@ Få den simulerte temperaturen til å oppføre seg mer som en ekte sensor.
 
 ### Mål
 
-Gjøre utskriften lettere å forstå og lagre målingene.
+- [x] Gjøre utskriften lettere å forstå og lagre målingene.
 
 ### Oppgaver
 

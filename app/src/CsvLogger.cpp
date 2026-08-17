@@ -8,8 +8,12 @@
 #include <cstdint>
 #include <vector>
 
-CsvLogger::CsvLogger(const std::string& filename)
-    : filename_(filename) {
+CsvLogger::CsvLogger(
+    const std::string& filename,
+    std::size_t maxMeasurements
+)
+    : filename_(filename),
+      maxMeasurements_(maxMeasurements) {
 }
 
 void CsvLogger::logData(const std::string& timestamp, double temperature) {
